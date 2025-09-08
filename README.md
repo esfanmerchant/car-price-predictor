@@ -41,7 +41,7 @@ The dataset contains details of cars such as:
 - Owner type  
 
 The target variable is the **selling price**.  
-(Data source: [Kaggle Car Price Dataset](https://www.kaggle.com/code/yogidsba/predict-used-car-prices-linearregression/input) or your custom dataset)
+(Data source: [Kaggle Car Price Dataset](https://www.kaggle.com/code/yogidsba/predict-used-car-prices-linearregression/input))
 
 ---
 
@@ -68,13 +68,7 @@ The target variable is the **selling price**.
    
 5. **Open your browser at:**
    ```bash
-  http://127.0.0.1:5000/
-
-## 📷 Screenshots
-
-(Add some screenshots of your web app UI here, e.g. homepage, form, and prediction result)
-
----
+   http://127.0.0.1:5000
 
 ## 📚 Learnings
 - Practiced **data preprocessing and cleaning**.  
