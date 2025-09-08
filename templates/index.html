@@ -7,7 +7,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="icon" type="image/png" sizes="48x48" href="{{ url_for('static', filename='css/favicon6.png') }}">
     <title>AutoValuate Pro - Vehicle Valuation Platform</title>
     <style>
       :root {
@@ -407,7 +406,7 @@
       .predict-section {
         text-align: center;
         margin-top: 56px;
-        padding: 40px;
+        padding: 40px 24px;
         background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 100%);
         border-radius: var(--border-radius-lg);
         border: 2px dashed var(--gray-200);
@@ -442,7 +441,8 @@
         cursor: pointer;
         transition: var(--transition);
         box-shadow: var(--shadow-lg);
-        min-width: 280px;
+        width: 100%;
+        max-width: 320px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -452,6 +452,10 @@
         text-transform: uppercase;
         letter-spacing: 0.025em;
         font-family: 'Space Grotesk', sans-serif;
+        word-wrap: break-word;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       .btn-predict::before {
@@ -720,11 +724,11 @@
         }
 
         .card-header {
-          padding: 48px 32px;
+          padding: 48px 24px;
         }
 
         .card-body {
-          padding: 40px 32px;
+          padding: 32px 24px;
         }
 
         .form-grid {
@@ -741,8 +745,14 @@
 
         .btn-predict {
           width: 100%;
-          max-width: 320px;
-          padding: 18px 32px;
+          max-width: 100%;
+          padding: 16px 24px;
+          font-size: 16px;
+          min-height: 56px;
+        }
+
+        .predict-section {
+          padding: 32px 16px;
         }
 
         .stats-row {
@@ -756,6 +766,73 @@
 
         .progress-step {
           width: 80px;
+        }
+
+        .section-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+        }
+
+        .section-icon {
+          margin-right: 0;
+          margin-bottom: 8px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .main-title {
+          font-size: 2rem;
+        }
+
+        .main-title i {
+          display: block;
+          margin-right: 0;
+          margin-bottom: 8px;
+        }
+
+        .subtitle {
+          font-size: 1rem;
+        }
+
+        .btn-predict {
+          padding: 14px 20px;
+          font-size: 14px;
+        }
+
+        .btn-predict span {
+          font-size: 14px;
+        }
+
+        .predict-section {
+          padding: 24px 12px;
+        }
+
+        .prediction-result {
+          padding: 24px 16px;
+        }
+
+        .prediction-result h3 {
+          font-size: 1.25rem;
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        .price-highlight {
+          font-size: 1.5rem;
+        }
+      }
+
+      /* Extra small screens */
+      @media (max-width: 360px) {
+        .btn-predict {
+          font-size: 13px;
+          padding: 12px 16px;
+        }
+
+        .btn-predict span {
+          white-space: normal;
+          line-height: 1.2;
         }
       }
 
@@ -852,9 +929,16 @@
                   <div class="input-wrapper">
                     <select class="form-control" id="brand" name="brand" required onchange="handleCustomOption(this)">
                       <option value="">Select vehicle brand</option>
-                      {% for type in brand %}
-                      <option value="{{type}}">{{type}}</option>
-                      {% endfor %}
+                      <option value="Toyota">Toyota</option>
+                      <option value="Honda">Honda</option>
+                      <option value="Maruti">Suzuki</option>
+                      <option value="Hyundai">Hyundai</option>
+                      <option value="BMW">BMW</option>
+                      <option value="Audi">Audi</option>
+                      <option value="Ford">Ford</option>
+                      <option value="Skoda">Skoda</option>
+                      <option value="Mercedes-Benz">Mercedes</option>
+                      <option value="Jaguar">Jaguar</option>
                       <option value="Custom">Other Brand</option>
                     </select>
                   </div>
@@ -868,9 +952,22 @@
                   <div class="input-wrapper">
                     <select class="form-control" id="year" name="year" required onchange="handleCustomOption(this)">
                       <option value="">Select year</option>
-                      {% for type in year %}
-                      <option value="{{type}}">{{type}}</option>
-                      {% endfor %}
+                      <option value="2025">2025</option>
+                      <option value="2024">2024</option>
+                      <option value="2023">2023</option>
+                      <option value="2022">2022</option>
+                      <option value="2021">2021</option>
+                      <option value="2020">2020</option>
+                      <option value="2019">2019</option>
+                      <option value="2018">2018</option>
+                      <option value="2017">2017</option>
+                      <option value="2016">2016</option>
+                      <option value="2015">2015</option>
+                      <option value="2014">2014</option>
+                      <option value="2013">2013</option>
+                      <option value="2012">2012</option>
+                      <option value="2011">2011</option>
+                      <option value="2010">2010</option>
                       <option value="Custom">Other Year</option>
                     </select>
                   </div>
@@ -981,9 +1078,10 @@
                   <div class="input-wrapper">
                     <select class="form-control" id="owner_type" name="owner_type" required>
                       <option value="">Select owner type</option>
-                      {% for type in owner_type %}
-                      <option value="{{type}}">{{type}} Owner</option>
-                      {% endfor %}
+                      <option value="First">First Owner</option>
+                      <option value="Second">Second Owner</option>
+                      <option value="Third">Third Owner</option>
+                      <option value="Fourth">Fourth Owner</option>
                     </select>
                   </div>
                 </div>
@@ -996,9 +1094,12 @@
                   <div class="input-wrapper">
                     <select class="form-control" id="fuel_type" name="fuel_type" required>
                       <option value="">Select fuel type</option>
-                      {% for type in fuel_type %}
-                      <option value="{{type}}">{{type}}</option>
-                      {% endfor %}
+                      <option value="Petrol">Petrol</option>
+                      <option value="Diesel">Diesel</option>
+                      <option value="CNG">CNG</option>
+                      <option value="LPG">LPG</option>
+                      <option value="Electric">Electric</option>
+                      <option value="Hybrid">Hybrid</option>
                     </select>
                   </div>
                 </div>
@@ -1011,9 +1112,9 @@
                   <div class="input-wrapper">
                     <select class="form-control" id="tranmission" name="tranmission" required>
                       <option value="">Select transmission type</option>
-                      {% for type in tranmission %}
-                      <option value="{{type}}">{{type}}</option>
-                      {% endfor %}
+                      <option value="Manual">Manual</option>
+                      <option value="Automatic">Automatic</option>
+                      <option value="CVT">CVT</option>
                     </select>
                   </div>
                 </div>
@@ -1103,7 +1204,7 @@
       });
 
       // Stagger form field animations
-      input.closest('.form-group').style.animationDelay = $;{index * 0.1}s;
+      input.closest('.form-group').style.animationDelay = (index * 0.1) + 's';
     });
 
     function handleCustomOption(select){
