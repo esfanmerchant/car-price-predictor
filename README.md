@@ -41,7 +41,7 @@ The dataset contains details of cars such as:
 - Owner type  
 
 The target variable is the **selling price**.  
-(Data source: [Kaggle Car Price Dataset](https://www.kaggle.com/datasets) or your custom dataset)
+(Data source: [Kaggle Car Price Dataset](https://www.kaggle.com/code/yogidsba/predict-used-car-prices-linearregression/input) or your custom dataset)
 
 ---
 
